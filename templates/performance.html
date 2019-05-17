@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+    .leftside{
+        width:50%;
+        float:left;
+    }
+    .rightside{
+        width:50%;
+        float:right;
+    }
+</style>
+</head>
+<body>
+    <form action="" method="" target="performance.html">
+        {% csrf_token %}
+        <h1>YOUR SCORE IS: </h1>
+        <h1>{{count}}</h1>
+        <div class="rightside">
+            <h3>YOUR SELECTIONS </h3>
+        </div>
+        <h3>PERFORMANCE</h3>
+        <div class="leftside">
+            {% for i in question|slice:"0:" %}
+            <div >
+                <div class="form-group mb-2">
+                    <label class="sr-only">Q{{forloop.counter}}      :   {{i.ques_desc}}</label>
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label">Ans   :  {{i.ans}}</label>
+                </div>
+            </div>
+            <br>
+            <br>
+            {% endfor %}
+        </div>
+
+        <div  class="rightside">
+            {% for key,value in option.items %}
+            {% if key != "csrfmiddlewaretoken" %}
+            <div>
+                <div class="form-group mb-2">
+                    <label class="sr-only">{{key}}. {{value}}</label>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </form>
+</body>
+</html>
+

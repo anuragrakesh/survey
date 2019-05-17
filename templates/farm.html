@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+<form action="" method="post" target="performance.html">
+    {% csrf_token %}
+    <h1>CHOOSE THE COORRECT OPTION</h1>
+    {% for i in question|slice:"0:" %}
+
+        <div>
+            <div class="alert alert-primary" role="alert">
+            Q{{forloop.counter}}. {{i.ques_desc}}
+            </div>
+            <div class="container">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input class="form-check-input" type="radio" aria-label="Radio button for following text input" name="{{i.id}}" id={{i.id}} value="{{i.opa}}">
+                        <label class="form-check-label" for={{i.id}}>{{i.opa}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                <input class="form-check-input" type="radio" name="{{i.id}}" id="exampleRadios2" value="{{i.opb}}" >
+                <label class="form-check-label" for={{i.id}}>{{i.opb}}</label>
+            </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                <input class="form-check-input" type="radio" name="{{i.id}}" id="exampleRadios3" value="{{i.opc}}">
+                <label class="form-check-label" for="exampleRadios3">{{i.opc}}</label>
+            </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                <input class="form-check-input" type="radio" name="{{i.id}}" id="exampleRadios4" value="{{i.opd}}">
+                <label class="form-check-label" for="exampleRadios4">{{i.opd}}</label>
+            </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    <br>
+    <br>
+    {% endfor %}
+<div class="container">
+    <center><input class="btn btn-secondary" type="submit" value="Submit Quiz" /></center>
+</div>
+</form>
+</body>
+</html>
